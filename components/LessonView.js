@@ -3,6 +3,7 @@ import Slides from "./Slides"
 import QuizSlides from "./QuizSlides"
 import QuizResultModal from "./QuizResultModal"
 import { markLessonDone } from "../lib/tracking"
+import { getCurrentUser } from "../lib/auth"
 import { useState, useEffect } from "react"
 import React from 'react' // Import React for keys and element creation
 
@@ -69,22 +70,24 @@ const processContentItem = (item) => {
 };
 
 export default function LessonView({ sectionId, subsection }) {
-  const [slidesDone, setSlidesDone] = useState(false);
-  const [quizResult, setQuizResult] = useState(null);
-  const [showResult, setShowResult] = useState(false);
-  const [token, setToken] = useState(null);
+  const [slidesDone, setSlidesDone] = useState(false)
+  const [quizResult, setQuizResult] = useState(null)
+  const [showResult, setShowResult] = useState(false)
+  const [user, setUser] = useState(null) // ✅ user state
 
   useEffect(() => {
-    const t = typeof window !== "undefined" ? localStorage.getItem("authToken") : null;
-    console.log("[v0] LessonView mounted, token exists:", !!t);
-    setToken(t);
-  }, []);
+    // fetch current user from server via cookie
+    async function fetchUser() {
+      const currentUser = await getCurrentUser()
+      setUser(currentUser)
+    }
+    fetchUser()
+  }, [])
 
-  // ✅ Updated to use text + image + caption
   const slides = (subsection.content || []).map((item) => ({
     title: item.subtitle,
     content: processContentItem(item),
-  }));
+  }))
 
   const questions = (subsection.quizzes || [])
     .map((quiz) => {
@@ -93,7 +96,7 @@ export default function LessonView({ sectionId, subsection }) {
           type: "tf",
           q: quiz.question,
           correct: quiz.answer === "نعم" ? "true" : "false",
-        };
+        }
       } else if (quiz.type === "multiple_choice") {
         return {
           type: "mcq",
@@ -103,23 +106,19 @@ export default function LessonView({ sectionId, subsection }) {
             label: opt,
           })),
           correct: String.fromCharCode(97 + quiz.options.indexOf(quiz.answer)),
-        };
+        }
       }
-      return null;
+      return null
     })
-    .filter(Boolean);
+    .filter(Boolean)
 
   async function onQuizFinish(result) {
-    console.log("[v0] Quiz finished with result:", result);
-    setQuizResult(result);
-    setShowResult(true);
+    console.log("[v0] Quiz finished with result:", result)
+    setQuizResult(result)
+    setShowResult(true)
 
-    if (token) {
-      console.log("[v0] Marking lesson as done");
-      await markLessonDone(subsection.id, token);
-    } else {
-      console.error("[v0] No token available to mark lesson done");
-    }
+    console.log("[v0] Marking lesson as done")
+    await markLessonDone(subsection.id)
   }
 
   return (
@@ -132,7 +131,13 @@ export default function LessonView({ sectionId, subsection }) {
         {!slidesDone ? (
           <Slides slides={slides} onFinish={() => setSlidesDone(true)} />
         ) : (
-          <QuizSlides subId={subsection.id} questions={questions} onFinish={onQuizFinish} />
+          // ✅ Pass user as prop to QuizSlides
+          <QuizSlides
+            subId={subsection.id}
+            questions={questions}
+            onFinish={onQuizFinish}
+            user={user}
+          />
         )}
       </div>
 
@@ -144,5 +149,5 @@ export default function LessonView({ sectionId, subsection }) {
         />
       )}
     </div>
-  );
+  )
 }

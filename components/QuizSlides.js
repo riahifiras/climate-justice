@@ -1,28 +1,12 @@
 "use client"
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { saveQuizResult } from "../lib/tracking"
 
-export default function QuizSlides({ subId, questions = [], onFinish }) {
+export default function QuizSlides({ subId, questions = [], onFinish, user }) {
   const [index, setIndex] = useState(0)
   const [answers, setAnswers] = useState({})
   const [submitted, setSubmitted] = useState(false)
   const [showAnswer, setShowAnswer] = useState(false)
-  const [token, setToken] = useState(null)
-  const [user, setUser] = useState(null)
-
-  useEffect(() => {
-    const t = typeof window !== "undefined" ? localStorage.getItem("authToken") : null
-    const userStr = typeof window !== "undefined" ? localStorage.getItem("cj-user") : null
-    console.log("[v0] QuizSlides mounted, token exists:", !!t, "user exists:", !!userStr)
-    setToken(t)
-    if (userStr) {
-      try {
-        setUser(JSON.parse(userStr))
-      } catch (e) {
-        console.error("[v0] Failed to parse user:", e)
-      }
-    }
-  }, [])
 
   if (!questions || questions.length === 0) return null
 
@@ -52,12 +36,12 @@ export default function QuizSlides({ subId, questions = [], onFinish }) {
 
     console.log("[v0] Quiz result calculated:", result)
 
-    if (token) {
-      console.log("[v0] Saving quiz result with token")
-      const saved = await saveQuizResult(subId, result, token)
+    try {
+      // Cookies handle authentication; no token needed
+      const saved = await saveQuizResult(subId, result)
       console.log("[v0] Quiz result saved:", saved)
-    } else {
-      console.error("[v0] No token available to save quiz result")
+    } catch (err) {
+      console.error("[v0] Failed to save quiz result:", err)
     }
 
     setSubmitted(true)
@@ -73,8 +57,13 @@ export default function QuizSlides({ subId, questions = [], onFinish }) {
       </div>
 
       <div className="space-y-2">
-        {(q.type === "tf" ? ["true", "false"] : q.options.map((o) => o.value)).map((val, i) => {
-          const label = q.type === "tf" ? (val === "true" ? "صح" : "خطأ") : q.options.find((o) => o.value === val).label
+        {(q.type === "tf" ? ["true", "false"] : q.options.map((o) => o.value)).map((val) => {
+          const label =
+            q.type === "tf"
+              ? val === "true"
+                ? "صح"
+                : "خطأ"
+              : q.options.find((o) => o.value === val).label
           const isCorrect = val === q.correct
           return (
             <label
