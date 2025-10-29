@@ -20,24 +20,46 @@ export default function RootLayout({ children }) {
       <body>
         <div className="min-h-screen bg-cj-sand">
           <header className="bg-white shadow-sm border-b">
-            <div className="container flex items-center justify-between py-4">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-cj-green flex items-center justify-center text-white font-bold">J</div>
-                <div>
-                  <h1 className="text-xl font-semibold">دليل العدالة المناخية</h1>
-                  <p className="text-sm text-gray-600">منصة تعليمية - الشبكة العربية للمجتمع المدني النسوي</p>
-                </div>
-              </div>
-              <nav className="flex items-center gap-2">
-                <Link href="/" className="px-3 py-2 rounded-full text-sm text-gray-700 hover:bg-gray-100">الرئيسية</Link>
-                <Link href="/course" className="px-3 py-2 rounded-full text-sm text-gray-700 hover:bg-gray-100">المحتوى</Link>
-              </nav>
-              <div className="ml-4">
-                { /* User badge (client-side) */ }
-                <UserBadge />
-              </div>
-            </div>
-          </header>
+  <div className="container mx-auto px-4 py-4 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-0">
+    <div className="flex items-center gap-4">
+      <div className="w-12 h-12 rounded-full bg-cj-green flex items-center justify-center text-white font-bold">J</div>
+      <div>
+        <h1 className="text-lg md:text-xl font-semibold">دليل العدالة المناخية</h1>
+        <p className="text-xs md:text-sm text-gray-600">منصة تعليمية - الشبكة العربية للمجتمع المدني النسوي</p>
+      </div>
+    </div>
+
+    {/* Mobile menu toggle */}
+    <div className="md:hidden ml-auto">
+      <button
+        className="p-2 rounded-md text-gray-700 hover:bg-gray-100 focus:outline-none"
+        onClick={() => setMenuOpen(!menuOpen)}
+      >
+        <svg
+          className="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+
+    {/* Navigation */}
+    <nav className={`flex flex-col md:flex-row gap-2 md:gap-2 ${menuOpen ? "flex" : "hidden"} md:flex`}>
+      <Link href="/" className="px-3 py-2 rounded-full text-sm text-gray-700 hover:bg-gray-100">الرئيسية</Link>
+      <Link href="/course" className="px-3 py-2 rounded-full text-sm text-gray-700 hover:bg-gray-100">المحتوى</Link>
+    </nav>
+
+    {/* User badge */}
+    <div className="ml-auto md:ml-4">
+      <UserBadge />
+    </div>
+  </div>
+</header>
+
 
           {/* Hero area */}
           <section className="bg-gradient-to-b from-white to-cj-sand py-8">
