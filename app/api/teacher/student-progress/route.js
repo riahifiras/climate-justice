@@ -6,12 +6,24 @@ export async function GET(request) {
   try {
     const token = request.cookies.get("auth-token")?.value
     if (!token) {
-      return Response.json({ error: "Unauthorized" }, { status: 401 })
+      return new Response(JSON.stringify({ error: "Unauthorized" }), {
+        status: 401,
+        headers: {
+          "Content-Type": "application/json",
+          "Cache-Control": "no-cache, no-store, max-age=0, must-revalidate",
+        },
+      })
     }
 
     const decoded = verifyToken(token)
     if (!decoded || decoded.role !== "teacher") {
-      return Response.json({ error: "Only teachers can access this" }, { status: 403 })
+      return new Response(JSON.stringify({ error: "Only teachers can access this" }), {
+        status: 403,
+        headers: {
+          "Content-Type": "application/json",
+          "Cache-Control": "no-cache, no-store, max-age=0, must-revalidate",
+        },
+      })
     }
 
     const db = await getDatabase()
@@ -48,9 +60,21 @@ export async function GET(request) {
       }),
     )
 
-    return Response.json({ students: studentsProgress })
+    return new Response(JSON.stringify({ students: studentsProgress }), {
+      status: 200,
+      headers: {
+        "Content-Type": "application/json",
+        "Cache-Control": "no-cache, no-store, max-age=0, must-revalidate",
+      },
+    })
   } catch (error) {
     console.error("Error fetching students progress:", error)
-    return Response.json({ error: "Failed to fetch students progress" }, { status: 500 })
+    return new Response(JSON.stringify({ error: "Failed to fetch students progress" }), {
+      status: 500,
+      headers: {
+        "Content-Type": "application/json",
+        "Cache-Control": "no-cache, no-store, max-age=0, must-revalidate",
+      },
+    })
   }
 }

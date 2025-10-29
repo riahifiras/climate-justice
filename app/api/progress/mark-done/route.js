@@ -9,13 +9,25 @@ export async function POST(request) {
     const token = request.cookies.get("auth-token")?.value
     if (!token) {
       console.error("[v0] No auth token in cookies")
-      return Response.json({ error: "Unauthorized" }, { status: 401 })
+      return new Response(JSON.stringify({ error: "Unauthorized" }), {
+        status: 401,
+        headers: {
+          "Content-Type": "application/json",
+          "Cache-Control": "no-cache, no-store, max-age=0, must-revalidate",
+        },
+      })
     }
 
     const decoded = verifyToken(token)
     if (!decoded) {
       console.error("[v0] Invalid token")
-      return Response.json({ error: "Invalid token" }, { status: 401 })
+      return new Response(JSON.stringify({ error: "Invalid token" }), {
+        status: 401,
+        headers: {
+          "Content-Type": "application/json",
+          "Cache-Control": "no-cache, no-store, max-age=0, must-revalidate",
+        },
+      })
     }
 
     const userId = decoded.id
@@ -38,7 +50,13 @@ export async function POST(request) {
 
     if (!sectionId || subsectionIndex === null) {
       console.error("[v0] Subsection not found:", subId)
-      return Response.json({ error: "Subsection not found" }, { status: 400 })
+      return new Response(JSON.stringify({ error: "Subsection not found" }), {
+        status: 400,
+        headers: {
+          "Content-Type": "application/json",
+          "Cache-Control": "no-cache, no-store, max-age=0, must-revalidate",
+        },
+      })
     }
 
     console.log("[v0] Found section:", sectionId, "subsection index:", subsectionIndex)
@@ -63,9 +81,24 @@ export async function POST(request) {
 
     console.log("[v0] Update result:", result)
 
-    return Response.json({ success: true, message: "Lesson marked as done" })
+    return new Response(JSON.stringify({ success: true, message: "Lesson marked as done" }), {
+      status: 200,
+      headers: {
+        "Content-Type": "application/json",
+        "Cache-Control": "no-cache, no-store, max-age=0, must-revalidate",
+      },
+    })
   } catch (error) {
     console.error("[v0] Error marking subsection done:", error)
-    return Response.json({ error: "Failed to mark subsection done", details: error.message }, { status: 500 })
+    return new Response(
+      JSON.stringify({ error: "Failed to mark subsection done", details: error.message }),
+      {
+        status: 500,
+        headers: {
+          "Content-Type": "application/json",
+          "Cache-Control": "no-cache, no-store, max-age=0, must-revalidate",
+        },
+      }
+    )
   }
 }

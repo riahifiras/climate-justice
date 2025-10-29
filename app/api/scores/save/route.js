@@ -8,13 +8,25 @@ export async function POST(request) {
     const token = request.cookies.get("auth-token")?.value
     if (!token) {
       console.error("[v0] No auth token in cookies")
-      return Response.json({ error: "Unauthorized" }, { status: 401 })
+      return new Response(JSON.stringify({ error: "Unauthorized" }), {
+        status: 401,
+        headers: {
+          "Content-Type": "application/json",
+          "Cache-Control": "no-cache, no-store, max-age=0, must-revalidate",
+        },
+      })
     }
 
     const decoded = verifyToken(token)
     if (!decoded) {
       console.error("[v0] Invalid token")
-      return Response.json({ error: "Invalid token" }, { status: 401 })
+      return new Response(JSON.stringify({ error: "Invalid token" }), {
+        status: 401,
+        headers: {
+          "Content-Type": "application/json",
+          "Cache-Control": "no-cache, no-store, max-age=0, must-revalidate",
+        },
+      })
     }
 
     const userId = decoded.id
@@ -25,7 +37,13 @@ export async function POST(request) {
 
     if (!subId || !result) {
       console.error("[v0] Missing subId or result")
-      return Response.json({ error: "Missing subId or result" }, { status: 400 })
+      return new Response(JSON.stringify({ error: "Missing subId or result" }), {
+        status: 400,
+        headers: {
+          "Content-Type": "application/json",
+          "Cache-Control": "no-cache, no-store, max-age=0, must-revalidate",
+        },
+      })
     }
 
     const db = await getDatabase()
@@ -56,9 +74,21 @@ export async function POST(request) {
 
     console.log("[v0] Update result:", updateResult)
 
-    return Response.json({ success: true, message: "Quiz result saved" })
+    return new Response(JSON.stringify({ success: true, message: "Quiz result saved" }), {
+      status: 200,
+      headers: {
+        "Content-Type": "application/json",
+        "Cache-Control": "no-cache, no-store, max-age=0, must-revalidate",
+      },
+    })
   } catch (error) {
     console.error("[v0] Error saving score:", error)
-    return Response.json({ error: "Failed to save score", details: error.message }, { status: 500 })
+    return new Response(JSON.stringify({ error: "Failed to save score", details: error.message }), {
+      status: 500,
+      headers: {
+        "Content-Type": "application/json",
+        "Cache-Control": "no-cache, no-store, max-age=0, must-revalidate",
+      },
+    })
   }
 }

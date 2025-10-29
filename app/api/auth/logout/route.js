@@ -9,5 +9,12 @@ export async function POST(request) {
     maxAge: 0,
     path: "/",
   })
-  return Response.json({ success: true })
+
+  return new Response(JSON.stringify({ success: true }), {
+    status: 200,
+    headers: {
+      "Content-Type": "application/json",
+      "Cache-Control": "no-cache, no-store, max-age=0, must-revalidate",
+    },
+  })
 }

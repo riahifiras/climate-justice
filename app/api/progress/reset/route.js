@@ -5,29 +5,65 @@ export async function POST(request) {
   try {
     const token = request.cookies.get("auth-token")?.value
     if (!token) {
-      return Response.json({ error: "Unauthorized" }, { status: 401 })
+      return new Response(JSON.stringify({ error: "Unauthorized" }), {
+        status: 401,
+        headers: {
+          "Content-Type": "application/json",
+          "Cache-Control": "no-cache, no-store, max-age=0, must-revalidate",
+        },
+      })
     }
 
     const decoded = verifyToken(token)
     if (!decoded) {
-      return Response.json({ error: "Invalid token" }, { status: 401 })
+      return new Response(JSON.stringify({ error: "Invalid token" }), {
+        status: 401,
+        headers: {
+          "Content-Type": "application/json",
+          "Cache-Control": "no-cache, no-store, max-age=0, must-revalidate",
+        },
+      })
     }
 
     if (decoded.role !== "teacher") {
-      return Response.json({ error: "Only teachers can reset progress" }, { status: 403 })
+      return new Response(JSON.stringify({ error: "Only teachers can reset progress" }), {
+        status: 403,
+        headers: {
+          "Content-Type": "application/json",
+          "Cache-Control": "no-cache, no-store, max-age=0, must-revalidate",
+        },
+      })
     }
 
     const { userId } = await request.json()
     if (!userId) {
-      return Response.json({ error: "User ID required" }, { status: 400 })
+      return new Response(JSON.stringify({ error: "User ID required" }), {
+        status: 400,
+        headers: {
+          "Content-Type": "application/json",
+          "Cache-Control": "no-cache, no-store, max-age=0, must-revalidate",
+        },
+      })
     }
 
     const db = await getDatabase()
     await db.collection("progress").deleteOne({ userId })
 
-    return Response.json({ success: true })
+    return new Response(JSON.stringify({ success: true }), {
+      status: 200,
+      headers: {
+        "Content-Type": "application/json",
+        "Cache-Control": "no-cache, no-store, max-age=0, must-revalidate",
+      },
+    })
   } catch (error) {
     console.error("Error resetting progress:", error)
-    return Response.json({ error: "Failed to reset progress" }, { status: 500 })
+    return new Response(JSON.stringify({ error: "Failed to reset progress" }), {
+      status: 500,
+      headers: {
+        "Content-Type": "application/json",
+        "Cache-Control": "no-cache, no-store, max-age=0, must-revalidate",
+      },
+    })
   }
 }

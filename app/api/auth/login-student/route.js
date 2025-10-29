@@ -7,11 +7,23 @@ export async function POST(request) {
     const { name, email } = await request.json()
 
     if (!name?.trim() || !email?.trim()) {
-      return Response.json({ error: "Name and email required" }, { status: 400 })
+      return new Response(JSON.stringify({ error: "Name and email required" }), {
+        status: 400,
+        headers: {
+          "Content-Type": "application/json",
+          "Cache-Control": "no-cache, no-store, max-age=0, must-revalidate",
+        },
+      })
     }
 
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email.trim())) {
-      return Response.json({ error: "Invalid email" }, { status: 400 })
+      return new Response(JSON.stringify({ error: "Invalid email" }), {
+        status: 400,
+        headers: {
+          "Content-Type": "application/json",
+          "Cache-Control": "no-cache, no-store, max-age=0, must-revalidate",
+        },
+      })
     }
 
     const db = await getDatabase()
@@ -56,16 +68,34 @@ export async function POST(request) {
       path: "/",
     })
 
-    return Response.json({
-      user: {
-        id: student.id,
-        role: student.role,
-        name: student.name,
-        email: student.email,
-      },
-    })
+    return new Response(
+      JSON.stringify({
+        user: {
+          id: student.id,
+          role: student.role,
+          name: student.name,
+          email: student.email,
+        },
+      }),
+      {
+        status: 200,
+        headers: {
+          "Content-Type": "application/json",
+          "Cache-Control": "no-cache, no-store, max-age=0, must-revalidate",
+        },
+      }
+    )
   } catch (error) {
     console.error("Error in student login:", error)
-    return Response.json({ error: "Failed to register student" }, { status: 500 })
+    return new Response(
+      JSON.stringify({ error: "Failed to register student" }),
+      {
+        status: 500,
+        headers: {
+          "Content-Type": "application/json",
+          "Cache-Control": "no-cache, no-store, max-age=0, must-revalidate",
+        },
+      }
+    )
   }
 }

@@ -5,12 +5,24 @@ export async function GET(request) {
   try {
     const token = request.cookies.get("auth-token")?.value
     if (!token) {
-      return Response.json({ progress: {} })
+      return new Response(JSON.stringify({ progress: {} }), {
+        status: 200,
+        headers: {
+          "Content-Type": "application/json",
+          "Cache-Control": "no-cache, no-store, max-age=0, must-revalidate",
+        },
+      })
     }
 
     const decoded = verifyToken(token)
     if (!decoded) {
-      return Response.json({ progress: {} })
+      return new Response(JSON.stringify({ progress: {} }), {
+        status: 200,
+        headers: {
+          "Content-Type": "application/json",
+          "Cache-Control": "no-cache, no-store, max-age=0, must-revalidate",
+        },
+      })
     }
 
     const userId = decoded.id
@@ -20,9 +32,21 @@ export async function GET(request) {
 
     const progress = progressDoc?.completedSubsections || {}
 
-    return Response.json({ progress })
+    return new Response(JSON.stringify({ progress }), {
+      status: 200,
+      headers: {
+        "Content-Type": "application/json",
+        "Cache-Control": "no-cache, no-store, max-age=0, must-revalidate",
+      },
+    })
   } catch (error) {
     console.error("Error loading progress:", error)
-    return Response.json({ error: "Failed to load progress" }, { status: 500 })
+    return new Response(JSON.stringify({ error: "Failed to load progress" }), {
+      status: 500,
+      headers: {
+        "Content-Type": "application/json",
+        "Cache-Control": "no-cache, no-store, max-age=0, must-revalidate",
+      },
+    })
   }
 }

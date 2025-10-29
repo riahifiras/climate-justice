@@ -4,9 +4,22 @@ export async function GET(request) {
   try {
     const db = await getDatabase()
     const students = await db.collection("users").find({ role: "student" }).toArray()
-    return Response.json({ students })
+
+    return new Response(JSON.stringify({ students }), {
+      status: 200,
+      headers: {
+        "Content-Type": "application/json",
+        "Cache-Control": "no-cache, no-store, max-age=0, must-revalidate",
+      },
+    })
   } catch (error) {
     console.error("Error fetching students:", error)
-    return Response.json({ error: "Failed to fetch students" }, { status: 500 })
+    return new Response(JSON.stringify({ error: "Failed to fetch students" }), {
+      status: 500,
+      headers: {
+        "Content-Type": "application/json",
+        "Cache-Control": "no-cache, no-store, max-age=0, must-revalidate",
+      },
+    })
   }
 }
