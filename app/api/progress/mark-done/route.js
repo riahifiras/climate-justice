@@ -55,17 +55,14 @@ export async function POST(request) {
     const db = await getDatabase();
     const progressCollection = db.collection("progress");
 
-    // Ensure completedSubsections[sectionId] exists
     const existing = await progressCollection.findOne({ userId }) || {};
     const completedSubsections = existing.completedSubsections || {};
     if (!completedSubsections[sectionId] || typeof completedSubsections[sectionId] !== "object") {
       completedSubsections[sectionId] = {};
     }
 
-    // Set the specific subsection to true
     completedSubsections[sectionId][subsectionIndex] = true;
 
-    // Update in DB
     const result = await progressCollection.updateOne(
       { userId },
       {
@@ -92,5 +89,3 @@ export async function POST(request) {
     );
   }
 }
-
-export default { POST };
