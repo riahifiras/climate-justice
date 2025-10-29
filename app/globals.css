@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --dir: rtl;
+}
+
+html, body, #__next {
+  height: 100%;
+}
+
+body {
+  background: var(--cj-sand, #f7f1e6);
+  color: #0f172a; /* gray-900 */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  direction: rtl;
+  font-family: 'Cairo', 'Noto Sans Arabic', system-ui, -apple-system, 'Segoe UI', Tahoma, sans-serif;
+}
+
+/* Simple container */
+.container {
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.card {
+  /* subtle glass card style */
+  background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(250,250,250,0.98));
+  border: 1px solid rgba(30,30,30,0.04);
+  box-shadow: 0 6px 18px rgba(16,24,40,0.06);
+  border-radius: 12px;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+  max-width: 100%;
+}
+
+.card h3, .card h4 { margin-bottom: 0.5rem }
+
+.progress {
+  height: 0.5rem;
+  background-color: #e5e7eb; /* gray-200 */
+  border-radius: 9999px;
+  overflow: hidden;
+}
+.progress > div {
+  height: 100%;
+  background-color: #1e7a24; /* cj-green */
+}
+
+/* Improve grid spacing used between cards */
+.grid-gap-4 {
+  display: grid;
+  gap: 1rem;
+}
+
+/* Responsive tweaks for small screens */
+@media (max-width: 768px) {
+  .container { padding-left: 1rem; padding-right: 1rem }
+}
+
+/* subtle page background texture */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 20px 20px;
+  pointer-events: none;
+  z-index: 0;
+}

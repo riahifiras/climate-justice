@@ -1,0 +1,305 @@
+{
+  "references": [
+    {
+      "id": 1,
+      "authors": "United Nations Framework Convention on Climate Change (UNFCCC)",
+      "year": 2015,
+      "title": "Paris Agreement",
+      "url": "https://unfccc.int/process-and-meetings/the-paris-agreement/the-paris-agreement"
+    },
+    {
+      "id": 2,
+      "authors": "United Nations Framework Convention on Climate Change (UNFCCC)",
+      "year": 1997,
+      "title": "Kyoto Protocol",
+      "url": "https://unfccc.int/kyoto_protocol"
+    },
+    {
+      "id": 3,
+      "authors": "United Nations Framework Convention on Climate Change (UNFCCC)",
+      "year": null,
+      "title": "United Nations Framework Convention on Climate Change",
+      "url": "https://unfccc.int/"
+    },
+    {
+      "id": 4,
+      "authors": "Mary Robinson Foundation",
+      "year": null,
+      "title": "Climate justice resources",
+      "url": "https://www.mrfcj.org/"
+    },
+    {
+      "id": 5,
+      "authors": "Robinson, M.",
+      "year": 2018,
+      "title": "Climate justice: Hope, resilience, and the fight for a sustainable future",
+      "url": null
+    },
+    {
+      "id": 6,
+      "authors": "Sustainability Directory",
+      "year": null,
+      "title": "Climate justice and mitigation",
+      "url": "https://energy.sustainability-directory.com/area/climate-justice-and-mitigation/"
+    },
+    {
+      "id": 7,
+      "authors": "Intergovernmental Panel on Climate Change (IPCC)",
+      "year": 2018,
+      "title": "Global warming of 1.5°C: An IPCC special report",
+      "url": "https://www.ipcc.ch/sr15/"
+    },
+    {
+      "id": 8,
+      "authors": "Global Commission on Adaptation",
+      "year": 2019,
+      "title": "Adapt now: A global call for leadership on climate resilience",
+      "url": "https://gca.org/reports/adapt-now/"
+    },
+    {
+      "id": 9,
+      "authors": "United Nations Framework Convention on Climate Change (UNFCCC)",
+      "year": null,
+      "title": "National adaptation plans",
+      "url": "https://unfccc.int/national-adaptation-plans"
+    },
+    {
+      "id": 10,
+      "authors": "United Nations Framework Convention on Climate Change (UNFCCC)",
+      "year": null,
+      "title": "LEG work programme",
+      "url": "https://unfccc.int/process-and-meetings/bodies/constituted-bodies/LEG/workprogramme"
+    },
+    {
+      "id": 11,
+      "authors": "Green Climate Fund (GCF)",
+      "year": null,
+      "title": "Green Climate Fund",
+      "url": "https://www.greenclimate.fund/"
+    },
+    {
+      "id": 12,
+      "authors": "World Bank",
+      "year": null,
+      "title": "Financing climate action: Investment and support mechanisms",
+      "url": "https://www.worldbank.org/en/topic/climatechange"
+    },
+    {
+      "id": 13,
+      "authors": "United Nations Development Programme (UNDP)",
+      "year": null,
+      "title": "Climate finance resources",
+      "url": "https://www.undp.org/"
+    },
+    {
+      "id": 14,
+      "authors": "Global Environment Facility (GEF)",
+      "year": null,
+      "title": "Global Environment Facility",
+      "url": "https://www.thegef.org/"
+    },
+    {
+      "id": 15,
+      "authors": "Adaptation Fund",
+      "year": null,
+      "title": "Adaptation Fund",
+      "url": "https://www.adaptation-fund.org/"
+    },
+    {
+      "id": 16,
+      "authors": "Climate Funds Update",
+      "year": null,
+      "title": "Climate finance data",
+      "url": "https://climatefundsupdate.org/"
+    },
+    {
+      "id": 17,
+      "authors": "United Nations Economic and Social Commission for Western Asia (ESCWA)",
+      "year": 2021,
+      "title": "تمويل العمل المناخي: الاحتياجات والتدفقات في المنطقة العربية",
+      "url": "https://unescwa.org/sites/default/files/pubs/pdf/climate-finance-needs-flows-arab-region-arabic.pdf"
+    },
+    {
+      "id": 18,
+      "authors": "United Nations Economic and Social Commission for Western Asia (ESCWA)",
+      "year": 2022,
+      "title": "استراتيجية الدول العربية للحصول على تمويل العمل المناخي وتعبئته 2022-2030",
+      "url": "https://www.unescwa.org/sites/default/files/event/materials/Arab-States-Climate-Finance-Access-Mobilization-Strategy%20%28Arabic%29-Draft-July2022.pdf"
+    },
+    {
+      "id": 19,
+      "authors": "United Nations Development Programme (UNDP)",
+      "year": 2021,
+      "title": "Climate finance sustaining peace: Making climate finance work in conflict-affected and fragile contexts",
+      "url": "https://www.undp.org/publications/climate-finance-sustaining-peace-making-climate-finance-work-conflict-affected-and-fragile-context"
+    },
+    {
+      "id": 20,
+      "authors": "United Nations Development Programme (UNDP)",
+      "year": 2016,
+      "title": "Gender and climate change",
+      "url": "https://www.undp.org/"
+    },
+    {
+      "id": 21,
+      "authors": "Women's Environment & Development Organization (WEDO)",
+      "year": null,
+      "title": "WEDO resources",
+      "url": "https://wedo.org/"
+    },
+    {
+      "id": 22,
+      "authors": "UN Women",
+      "year": 2020,
+      "title": "Gender, climate and security",
+      "url": "https://www.unwomen.org/sites/default/files/Headquarters/Attachments/Sections/Library/Publications/2020/Gender-climate-and-security-en.pdf"
+    },
+    {
+      "id": 23,
+      "authors": "Georgetown Institute for Women, Peace and Security (GIWPS)",
+      "year": 2021,
+      "title": "The climate-gender-conflict nexus",
+      "url": "https://giwps.georgetown.edu/wp-content/uploads/2021/01/The-Climate-Gender-Conflict-Nexus.pdf"
+    },
+    {
+      "id": 24,
+      "authors": "Global Citizen",
+      "year": null,
+      "title": "Tech innovation and women farmers",
+      "url": "https://www.globalcitizen.org/en/content/tech-innovation-women-farmers/"
+    },
+    {
+      "id": 25,
+      "authors": "World Bank",
+      "year": 2019,
+      "title": "Women in half the world still denied land/property rights despite laws",
+      "url": "https://www.worldbank.org/en/news/press-release/2019/03/25/women-in-half-the-world-still-denied-land-property-rights-despite-laws"
+    },
+    {
+      "id": 26,
+      "authors": "NASA",
+      "year": null,
+      "title": "Global climate change: Vital signs of the planet",
+      "url": "https://climate.nasa.gov/"
+    },
+    {
+      "id": 27,
+      "authors": "National Geographic",
+      "year": 2020,
+      "title": "The science of climate change explained",
+      "url": "https://www.nationalgeographic.com/"
+    },
+    {
+      "id": 28,
+      "authors": "United Nations",
+      "year": null,
+      "title": "Climate change reports",
+      "url": "https://www.un.org/ar/climatechange/reports"
+    },
+    {
+      "id": 29,
+      "authors": "Guterres, A.",
+      "year": 2021,
+      "title": "Statement at Security Council debate on climate and security",
+      "url": "https://unfccc.int/news/statement-by-antonio-guterres-at-security-council-debate-on-climate-and-security"
+    },
+    {
+      "id": 30,
+      "authors": "United Nations Security Council",
+      "year": 2021,
+      "title": "Security Council fails to adopt resolution integrating climate-related security risk into conflict-prevention strategies",
+      "url": "https://press.un.org/en/2021/sc14666.doc.htm"
+    },
+    {
+      "id": 31,
+      "authors": "United Nations Environment Programme (UNEP)",
+      "year": null,
+      "title": "Climate change and security risks",
+      "url": "https://www.unep.org/topics/disasters-and-conflicts/environment-security/climate-change-and-security-risks"
+    },
+    {
+      "id": 32,
+      "authors": "Adger, W. N., Pulhin, J. M., Barnett, J., Dabelko, G. D., Hovelsrud, G. K., Levy, M., & Oswald Spring, U.",
+      "year": 2014,
+      "title": "Human security. In C. B. Field et al. (Eds.), Climate change 2014: Impacts, adaptation, and vulnerability",
+      "url": null
+    },
+    {
+      "id": 33,
+      "authors": "Barnett, J.",
+      "year": 2003,
+      "title": "Security and climate change",
+      "url": "https://doi.org/10.1016/S0959-3780(02)00080-8"
+    },
+    {
+      "id": 34,
+      "authors": "Krampe, F.",
+      "year": 2021,
+      "title": "Ownership and inequalities: Exploring UNEP's environmental cooperation for peacebuilding program",
+      "url": "https://doi.org/10.1007/s11625-020-00835-1"
+    },
+    {
+      "id": 35,
+      "authors": "Gómez, O. A.",
+      "year": 2012,
+      "title": "What is a human security project? The experience of the UN Trust Fund for Human Security",
+      "url": "https://doi.org/10.1080/14781158.2012.718430"
+    },
+    {
+      "id": 36,
+      "authors": "International Committee of the Red Cross (ICRC)",
+      "year": 2008,
+      "title": "How is the term \"armed conflict\" defined in international humanitarian law?",
+      "url": "https://www.icrc.org/en/doc/assets/files/other/opinion-paper-armed-conflict.pdf"
+    },
+    {
+      "id": 37,
+      "authors": "United Nations Economic Commission for Europe (UNECE) & UNESCO",
+      "year": 2022,
+      "title": "UN 2023 Water Conference, concept paper: Interactive dialogue 4 – Transboundary and international water cooperation",
+      "url": null
+    },
+    {
+      "id": 38,
+      "authors": "King, A. D., & Harrington, L. J.",
+      "year": 2018,
+      "title": "The inequality of climate change from 1.5 to 2°C of global warming",
+      "url": "https://doi.org/10.1029/2018GL078430"
+    },
+    {
+      "id": 39,
+      "authors": "United Nations, Department of Economic and Social Affairs (UN DESA)",
+      "year": 2023,
+      "title": "Excerpt from Committee for Development Policy: Report of the twenty-fifth session",
+      "url": "https://www.un.org/development/desa/dpad/wp-content/uploads/sites/45/CDP-excerpt-2023-1.pdf"
+    },
+    {
+      "id": 40,
+      "authors": "OPEC",
+      "year": null,
+      "title": "World oil outlook – data graphs",
+      "url": "https://www.opec.org/opec_web/en/data_graphs/330.htm"
+    },
+    {
+      "id": 41,
+      "authors": "Carnegie Endowment for International Peace",
+      "year": 2018,
+      "title": "Refugee crises in the Arab world",
+      "url": "https://carnegieendowment.org/2018/10/18/refugee-crises-in-arab-world-pub-77522"
+    },
+    {
+      "id": 42,
+      "authors": "UNHCR",
+      "year": null,
+      "title": "Global compact on refugees",
+      "url": "https://www.unhcr.org/gcr/GCR_English.pdf"
+    },
+    {
+      "id": 43,
+      "authors": "United Nations Development Programme (UNDP)",
+      "year": 2020,
+      "title": "قاموس حول مصطلحات المناخ: دليل يومي لتغير المناخ",
+      "url": "https://www.undp.org/ar/arab-states/blog/qamws-hwl-mstlhat-almnakh-dlyl-ywmy-ltghyr-almnakh"
+    }
+  ]
+}
