@@ -43,7 +43,6 @@ function InnerSectionCard({ section }) {
   const sectionProgress = progress[section.id] || {}
 
   const doneArr = subs.map((_, idx) => sectionProgress[idx] === true)
-  console.log("yyyyyyyyyyy", doneArr)
   const allDone = subs.length > 0 && doneArr.every(Boolean)
 
   return (

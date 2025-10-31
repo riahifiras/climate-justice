@@ -26,7 +26,6 @@ export default function QuizSlides({ subId, questions = [], onFinish, user }) {
   }
 
   async function submitAll() {
-    console.log("[v0] Submitting quiz answers")
     let correct = 0
     questions.forEach((qq, i) => {
       if (answers[i] != null && answers[i] === qq.correct) correct++
@@ -34,12 +33,10 @@ export default function QuizSlides({ subId, questions = [], onFinish, user }) {
     const pct = Math.round((correct / questions.length) * 100)
     const result = { correct, total: questions.length, pct, at: Date.now() }
 
-    console.log("[v0] Quiz result calculated:", result)
 
     try {
       // Cookies handle authentication; no token needed
       const saved = await saveQuizResult(subId, result)
-      console.log("[v0] Quiz result saved:", saved)
     } catch (err) {
       console.error("[v0] Failed to save quiz result:", err)
     }

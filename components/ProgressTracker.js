@@ -17,7 +17,6 @@ function InnerProgress() {
 
         if (response.ok) {
           const data = await response.json()
-          console.log("[v0] Progress stats:", data)
           setStats(data.stats || { completed: 0, total: 0, percentage: 0 })
         } else {
           setStats({ completed: 0, total: 0, percentage: 0 })

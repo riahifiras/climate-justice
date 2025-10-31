@@ -3,7 +3,6 @@ import { verifyToken } from "../../../../lib/jwt"
 
 export async function POST(request) {
   try {
-    console.log("[v0] scores/save API called")
 
     const token = request.cookies.get("auth-token")?.value
     if (!token) {
@@ -30,10 +29,8 @@ export async function POST(request) {
     }
 
     const userId = decoded.id
-    console.log("[v0] User ID:", userId)
 
     const { subId, result } = await request.json()
-    console.log("[v0] SubId:", subId, "Result:", result)
 
     if (!subId || !result) {
       console.error("[v0] Missing subId or result")
@@ -58,7 +55,6 @@ export async function POST(request) {
       savedAt: new Date(),
     }
 
-    console.log("[v0] Saving scores:", scores)
 
     const updateResult = await scoresCollection.updateOne(
       { userId },
@@ -72,7 +68,6 @@ export async function POST(request) {
       { upsert: true },
     )
 
-    console.log("[v0] Update result:", updateResult)
 
     return new Response(JSON.stringify({ success: true, message: "Quiz result saved" }), {
       status: 200,

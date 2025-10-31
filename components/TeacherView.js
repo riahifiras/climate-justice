@@ -17,7 +17,6 @@ export default function TeacherView() {
 
         if (response.ok) {
           const data = await response.json()
-          console.log("[v0] Students progress loaded:", data)
           setStudents(data.students || [])
         } else {
           console.error("[v0] Failed to load students:", response.status)

@@ -113,11 +113,9 @@ export default function LessonView({ sectionId, subsection }) {
     .filter(Boolean)
 
   async function onQuizFinish(result) {
-    console.log("[v0] Quiz finished with result:", result)
     setQuizResult(result)
     setShowResult(true)
 
-    console.log("[v0] Marking lesson as done")
     await markLessonDone(subsection.id)
   }
 

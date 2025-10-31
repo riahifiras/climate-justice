@@ -4,7 +4,6 @@ import course from "../../../../data/course.json";
 
 export async function POST(request) {
   try {
-    console.log("[v0] mark-done API called");
 
     const token = request.cookies.get("auth-token")?.value;
     if (!token) {
@@ -25,10 +24,8 @@ export async function POST(request) {
     }
 
     const userId = decoded.id;
-    console.log("[v0] User ID:", userId);
 
     const { subId } = await request.json();
-    console.log("[v0] SubId:", subId);
 
     let sectionId = null;
     let subsectionIndex = null;
@@ -50,7 +47,6 @@ export async function POST(request) {
       });
     }
 
-    console.log("[v0] Found section:", sectionId, "subsection index:", subsectionIndex);
 
     const db = await getDatabase();
     const progressCollection = db.collection("progress");
@@ -75,7 +71,6 @@ export async function POST(request) {
       { upsert: true }
     );
 
-    console.log("[v0] Update result:", result);
 
     return new Response(JSON.stringify({ success: true, message: "Lesson marked as done" }), {
       status: 200,
